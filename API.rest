@@ -1,0 +1,10 @@
+###### Testing register route 
+POST  http://localhost:6000/api/auth/register
+content-type: application/json
+
+{
+    "username": "MikeyTe2t",
+    "password": "12345",
+}
+    
+
