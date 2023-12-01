@@ -3,8 +3,37 @@ POST  http://localhost:6000/api/auth/register
 content-type: application/json
 
 {
-    "username": "MikeyTe2t",
-    "password": "12345",
+    "firstname": "Michael",
+    "lastname": "Masala",
+    "email": "michaelmasala@gmail.com",
+    "password": "12345678"
 }
     
 
+#### testing login route 
+POST http://localhost:6000/api/auth/login
+content-type: application/json
+
+{
+     "email": "michaelmasala@gmail.com",
+    "password": "12345678"
+}
+
+
+#### Testing delete route 
+DELETE http://localhost:6000/api/auth/deleteTsk/
+content-type: application/json
+
+# {
+#     "id":"656896e198b57f2fac710b61"
+# }
+
+
+#### Testing update route 
+PUT  http://localhost:6000/api/auth/update
+content-type: application/json
+
+{
+    "Task":"eat the apples",
+    "Notes": "i need 6 of them"
+}
