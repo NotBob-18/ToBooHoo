@@ -1,5 +1,5 @@
 ###### Testing register route 
-POST  http://localhost:6000/api/auth/register
+POST  http://localhost:6000/api/register
 content-type: application/json
 
 {
@@ -11,7 +11,7 @@ content-type: application/json
     
 
 #### testing login route 
-POST http://localhost:6000/api/auth/login
+POST http://localhost:6000/api/login
 content-type: application/json
 
 {
@@ -20,20 +20,35 @@ content-type: application/json
 }
 
 
-#### Testing delete route 
-DELETE http://localhost:6000/api/auth/deleteTsk/
-content-type: application/json
 
-# {
-#     "id":"656896e198b57f2fac710b61"
-# }
+#### Testing delete route 
+DELETE http://localhost:6000/api/delete/656d9e4cf50ceddf7f2f7054
+
+
 
 
 #### Testing update route 
-PUT  http://localhost:6000/api/auth/update
+PUT  http://localhost:6000/api/update/656da5b4f7d6c21ee534ac20
+content-type: application/json
+
+{ 
+    "Date": "01/01/01",
+    "Task":"eat the apples",
+    "Notes":"i think maybe 10 more apples" 
+}
+
+
+#### Testing create route 
+POST  http://localhost:6000/api/create
 content-type: application/json
 
 {
-    "Task":"eat the apples",
-    "Notes": "i need 6 of them"
+  "Date": "01/01/01",
+  "Task": "need more apples",
+  "Notes": "18 more apples will suffice"
 }
+
+
+
+### testing read route 
+GET  http://localhost:6000/api/readTsk
