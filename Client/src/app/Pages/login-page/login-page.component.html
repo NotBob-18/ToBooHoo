@@ -1,1 +1,44 @@
-<p>login-page works!</p>
+<!-- Section: Design Block -->
+<section class="">
+    <!-- Jumbotron -->
+    <div class=" jumbotron px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
+      <div class="container">
+        <div class=" box row gx-lg-5 align-items-center">
+          
+  
+          <div class="form col-lg-6 mb-lg-0">
+            <div class="card">
+              <div class="card-body py-5 px-md-5">
+               
+                  <!-- 2 column grid layout with text inputs for the first and last names -->
+      
+                <form [formGroup]="form" autocomplete="off" >
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <input type="email" #email id="form3Example3" class="form-control" />
+                    <label class="form-group" for="form3Example3" formControlName="email">Email address</label>
+                  </div>
+  
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <input type="password" #password id="form3Example4" class="form-control" />
+                    <label class="form-group" for="form3Example4" formControlName="password">Password</label>
+                  </div>
+  
+                  
+  
+                  <!-- Submit button -->
+                  <button type="submit" (click)="login()" class="butt btn btn-secondary btn-block mb-4">
+                    SUBMIT
+                  </button>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->

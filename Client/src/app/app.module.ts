@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+
+
 import { AppComponent } from './app.component';
 import { RegisterPageComponent } from './Pages/register-page/register-page.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
@@ -10,6 +12,8 @@ import { LandingPageComponent } from './Pages/landing-page/landing-page.componen
 import { NavbarComponentComponent } from './ui/navbar-component/navbar-component.component';
 import { FooterComponentComponent } from './ui/footer-component/footer-component.component';
 import { CardsComponentComponent } from './ui/cards-component/cards-component.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +24,15 @@ import { CardsComponentComponent } from './ui/cards-component/cards-component.co
     LandingPageComponent,
     NavbarComponentComponent,
     FooterComponentComponent,
-    CardsComponentComponent
+    CardsComponentComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
