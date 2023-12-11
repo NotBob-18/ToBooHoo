@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,  forwardRef } from '@angular/core';
+import { User } from 'src/app/Interfaces/users';
+import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router'
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 
 
@@ -8,32 +11,54 @@ import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
  
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.scss']
+  styleUrls: ['./register-page.component.scss'],
+
+  providers: [
+    { 
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: forwardRef(() => RegisterPageComponent),
+    }
+  ]
 })
+
+
 export class RegisterPageComponent {
-router:any; 
+  RegisterationForm = new FormGroup({
+    fullname: new FormControl (''),
+    email: new FormControl(''),
+    password: new FormControl('')
+  });
+
+
+  items: User[] = [];
+  password: any;
+  email: any;
+  name: any;
+  userService: any;
+  
 
   constructor(
-    private users: UserService ) {}
+    private service:UserService,
+    private router: Router
+  ) {}
 
-    form: FormGroup = new FormGroup ({
-      firstname: new FormControl(''),
-      lastname: new FormControl(''),
-      email: new FormControl(''),
-      password: new FormControl('')
 
+  ngOnInit(): void {}
+
+  
+  Register() {
+    let user = {
+      fullname: this.RegisterationForm.value.fullname || '',
+      email: this.RegisterationForm.value.email || '',
+      password: this.RegisterationForm.value.password|| ''
+    };
+
+    this.service.register(user).subscribe((res: any) => {
+      res
+      this.router.navigate(['/login']);
     });
-    ngOnInit() {
-
-    }
-  
-    registerUser() {
-      this.users.registerUser(this.form.value).subscribe((data) => {
-        console.log(data);
-  
-        this.router.navigate(['/login']);
-      });
-    }
+  }
   }
 
   

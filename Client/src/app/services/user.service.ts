@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http'
-import { login } from '../Interfaces/login';
-import { users } from '../Interfaces/users';
+import { User } from '../Interfaces/users';
 import { Router } from '@angular/router'
 import { environment } from 'src/app/environments/environments'
 
@@ -11,24 +10,30 @@ import { environment } from 'src/app/environments/environments'
   providedIn: 'root'
 })
 export class UserService {
-    SERVER_URL: string = environment.SERVER_URL;
-
-    userData?: users;
+  remove(id: any) {
+    throw new Error('Method not implemented.');
+  
+  }
+    userData?: User;
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  signIn(users: users): Observable<login> {
-    console.log(users);
-    return this.http.post<users>(`${this.SERVER_URL}/api/login`, users);
-  }
+  private baseUrl = 'http://localhost:8000/api'
 
-  registerUser(users: users): Observable<users> {
-    console.log(users);
-    
-    return this.http.post<users>(`${this.SERVER_URL}/api/register`, users);
-  } 
+  
+// register function
+register(user:User): Observable<User> {
+  return this.http.post<User>(`${this.baseUrl}/register`, user
+);
+}
 
-  saveToStorage(user: users) {
+// login function
+login(user:User): Observable<User> {
+  return this.http.post<User>(`${this.baseUrl}/login`, user
+);
+} 
+
+  saveToStorage(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
   };
   
